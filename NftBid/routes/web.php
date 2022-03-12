@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/admin', function () { return view('dash.index');});
 Route::get('/admin/productos',[ProductosController::class, 'miFuncion']);
+Route::post('/admin/productos',[ProductosController::class, 'insertar']);
 
 Route::get('/contacto',function(){
     echo "HOLA ESTAS EN CONTACTO";

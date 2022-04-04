@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dash\ProductosController;
-
+use App\Http\Controllers\Dash\CategoriesController;
+use App\Http\Controllers\Front\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,17 @@ use App\Http\Controllers\Dash\ProductosController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
-Route::get('/admin', function () { return view('dash.index');});
-Route::get('/admin/productos',[ProductosController::class, 'miFuncion']);
-Route::post('/admin/productos',[ProductosController::class, 'insertar']);
+Route::get('/',[IndexController::class,'index']);
+
+Route::group(['prefix'=>'admin','as'=>'admin'],function(){
+    Route::get('/', function () { return view('dash.index');});
+    Route::get('/productos',[ProductosController::class, 'miFuncion']);
+    Route::post('/productos',[ProductosController::class, 'insertar']);
+    Route::post('/categorias/update',[CategoriesController::class, 'update']);
+    //Route::get('/categorias',[CategoriesController::class,'index']);
+    //Route::post('/categorias',[CategoriesController::class, 'store']);
+    Route::resource('categorias',CategoriesController::class);
+});     
 
 Route::get('/contacto',function(){
     echo "HOLA ESTAS EN CONTACTO";

@@ -18,7 +18,7 @@
                 </div>
             @endif
             <!-- PRINT PRODUCTS -->
-            <div class="row">
+            <div class="row col-12">
                 @foreach($nfts as $nft)
                     <div class="card col-3" >
                         <img class="card-img-top" 

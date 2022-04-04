@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('blockchain_type');
             $table->string('metadata');
             $table->integer('likes');
+            $table->string('slug');
             $table->integer('id_category')->unsigned();
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
